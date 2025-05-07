@@ -13,9 +13,6 @@ const ProductSubmission = () => {
   const [submittedData, setSubmittedData] = useState(null);
 
   const handleSubmitForm = async (data: any) => {
-    if (data.image === "") {
-      data.image = null;
-    }
     setSubmittedData(data);
     console.log("Submitted:", data);
     reset();

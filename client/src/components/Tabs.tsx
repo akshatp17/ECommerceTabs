@@ -6,7 +6,7 @@ const Tabs = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="w-full bg-white shadow-md">
+    <div className="w-full bg-white shadow-md mb-2">
       {/* Website Header */}
       <div className="text-2xl font-bold text-center py-4 border-b border-gray-200">
         Simple E-Commerce Website
