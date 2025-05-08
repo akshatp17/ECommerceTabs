@@ -4,7 +4,7 @@ import axios from "axios";
 
 const MyProducts = () => {
   const [keyword, setKeyword] = useState("");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
 
   // Fetching data from the server
   useEffect(() => {
@@ -33,18 +33,21 @@ const MyProducts = () => {
         placeholder="Search for products..."
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((product: any) => (
-          <ProductCards
-            key={product.id}
-            products={{
-              title: product.title,
-              description: product.description,
-              price: product.price,
-              image_url: product.image_url,
-            }}
-          />
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {products
+          .slice()
+          .reverse()
+          .map((product: any) => (
+            <ProductCards
+              key={product.id}
+              products={{
+                title: product.title,
+                description: product.description,
+                price: product.price,
+                image_url: product.image_url,
+              }}
+            />
+          ))}
       </div>
     </div>
   );
