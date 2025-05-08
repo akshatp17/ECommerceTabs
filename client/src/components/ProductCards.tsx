@@ -14,9 +14,8 @@ const ProductCards = ({ products }: ProductCardsProps) => {
     <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-4">
       <img
         src={
-          products.image
-            ? products.image
-            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNNLEL-qmmLeFR1nxJuepFOgPYfnwHR56vcw&s"
+          products.image ||
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNNLEL-qmmLeFR1nxJuepFOgPYfnwHR56vcw&s"
         }
         alt={products.name}
         className="w-full h-48 object-cover rounded-md mb-4"
