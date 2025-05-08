@@ -22,7 +22,7 @@ const ProductSubmission = () => {
     }
   };
 
-  const imageUrl = watch("image");
+  const imageUrl = watch("image_url");
 
   return (
     <div className="bg-gray-50 p-6">

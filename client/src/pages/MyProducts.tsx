@@ -38,10 +38,10 @@ const MyProducts = () => {
           <ProductCards
             key={product.id}
             products={{
-              name: product.title,
-              desc: product.description,
+              title: product.title,
+              description: product.description,
               price: product.price,
-              image: product.image,
+              image_url: product.image_url,
             }}
           />
         ))}
