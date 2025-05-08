@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import axios from "axios";
 
 const ProductSubmission = () => {
   const {
@@ -10,12 +11,16 @@ const ProductSubmission = () => {
     watch,
   } = useForm();
 
-  const [submittedData, setSubmittedData] = useState(null);
-
   const handleSubmitForm = async (data: any) => {
-    setSubmittedData(data);
-    console.log("Submitted:", data);
-    reset();
+    try {
+      const res = await axios.post("http://localhost:8080/v1/products/", data);
+      console.log("Response:", res);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      console.log("Form submission complete.");
+      reset();
+    }
   };
 
   const imageUrl = watch("image");
@@ -40,7 +45,7 @@ const ProductSubmission = () => {
                 type="text"
                 placeholder="Enter Product Name"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                {...register("name", { required: "Name is required" })}
+                {...register("title", { required: "Name is required" })}
               />
               {errors.name && (
                 <p className="text-red-600 text-sm">
@@ -59,7 +64,9 @@ const ProductSubmission = () => {
                 type="text"
                 placeholder="Enter Product Description"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                {...register("desc", { required: "Description is required" })}
+                {...register("description", {
+                  required: "Description is required",
+                })}
               />
               {errors.desc && (
                 <p className="text-red-600 text-sm">
@@ -98,7 +105,7 @@ const ProductSubmission = () => {
                 type="url"
                 placeholder="https://example.com/image.jpg"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                {...register("image")}
+                {...register("image_url")}
               />
             </div>
 
